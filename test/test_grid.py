@@ -1,0 +1,279 @@
+from src.grid import Grid, Row, Column, Area, Cell
+
+class TestingGrids:
+    def test_initialised_grid_has_get_size_property(self):
+        # Arrange
+        dummy_grid = Grid()
+        expected = 'get_size'
+        # Act
+        result = dir(dummy_grid)
+        # Assert
+        assert expected in result
+
+    def test_initialised_grid_get_size_property_returns_correctly(self):
+        # Arrange
+        dummy_grid = Grid()
+        expected = 9
+        # Act
+        result = dummy_grid.get_size
+        # Assert
+        assert expected == result
+
+        # Arrange
+        dummy_grid = Grid(8)
+        expected = 8
+        # Act
+        result = dummy_grid.get_size
+        # Assert
+        assert expected == result
+
+    def test_initialised_grid_is_default_size(self):
+        # Arrange
+        dummy_grid = Grid()
+        expected_length = 81
+        expected_zero_count = 81
+        expected_grid_type = list
+        # Eventually change to Cell type
+        expected_grid_element_type = str
+        # Act
+        result_length = len(dummy_grid.data)
+        result_zero_count = dummy_grid.data.count('0')
+        result_grid_type = dummy_grid.data
+        result_grid_element_type = dummy_grid.data[0]
+        # Assert
+        assert expected_length == result_length
+        assert expected_zero_count == result_zero_count
+        assert isinstance(result_grid_type, expected_grid_type)
+        assert isinstance(result_grid_element_type, expected_grid_element_type)
+
+    def test_initialised_grid_is_specified_size(self):
+        # Arrange
+        input_size = 3
+        dummy_grid = Grid(input_size)
+        expected_length = 9
+        expected_zero_count = 9
+        expected_grid_type = list
+        # Eventually change to Cell type
+        expected_grid_element_type = str
+        # Act
+        result_length = len(dummy_grid.data)
+        result_zero_count = dummy_grid.data.count('0')
+        result_grid_type = dummy_grid.data
+        result_grid_element_type = dummy_grid.data[0]
+        # Assert
+        assert expected_length == result_length
+        assert expected_zero_count == result_zero_count
+        assert isinstance(result_grid_type, expected_grid_type)
+        assert isinstance(result_grid_element_type, expected_grid_element_type)
+
+        # Arrange
+        input_size = 17
+        dummy_grid = Grid(input_size)
+        expected_length = 289
+        expected_zero_count = 289
+        expected_grid_type = list
+        # Eventually change to Cell type
+        expected_grid_element_type = str
+        # Act
+        result_length = len(dummy_grid.data)
+        result_zero_count = dummy_grid.data.count('0')
+        result_grid_type = dummy_grid.data
+        result_grid_element_type = dummy_grid.data[0]
+        # Assert
+        assert expected_length == result_length
+        assert expected_zero_count == result_zero_count
+        assert isinstance(result_grid_type, expected_grid_type)
+        assert isinstance(result_grid_element_type, expected_grid_element_type)
+
+class TestingRows:
+    def test_initialised_grid_has_get_size_property(self):
+        # Arrange
+        dummy_grid = Grid()
+        dummy_row = Row(dummy_grid)
+        expected = 'get_size'
+        # Act
+        result = dir(dummy_row)
+        # Assert
+        assert expected in result
+
+    def test_initialised_row_get_size_property_returns_correctly(self):
+        # Arrange
+        dummy_grid = Grid()
+        dummy_row = Row(dummy_grid)
+        expected = 9
+        # Act
+        result = dummy_row.get_size
+        # Assert
+        assert expected == result
+
+        # Arrange
+        dummy_grid = Grid(3)
+        dummy_row = Row(dummy_grid)
+        expected = 3
+        # Act
+        result = dummy_row.get_size
+        # Assert
+        assert expected == result
+
+    def test_initialised_row_has_default_correct_length(self):
+        # Assert
+        dummy_grid = Grid()
+        dummy_row = Row(dummy_grid)
+        expected_length = 9
+        # Act
+        result_length = dummy_row.get_size
+        # Assert
+        assert expected_length == result_length
+
+    def test_initialised_row_has_specified_correct_length(self):
+        # Assert
+        input_size = 4
+        dummy_grid = Grid(input_size)
+        dummy_row = Row(dummy_grid)
+        expected_length = 4
+        # Act
+        result_length = dummy_row.get_size
+        # Assert
+        assert expected_length == result_length
+
+        # Assert
+        input_size = 54
+        dummy_grid = Grid(input_size)
+        dummy_row = Row(dummy_grid)
+        expected_length = 54
+        # Act
+        result_length = dummy_row.get_size
+        # Assert
+        assert expected_length == result_length
+# Change beneath tp Columns once rows is set up
+"""
+class TestingRows:
+    def test_initiated_grid_has_get_size_property(self):
+        # Arrange
+        dummy_grid = Grid()
+        dummy_row = Row(dummy_grid)
+        expected = 'get_size'
+        # Act
+        result = dir(dummy_row)
+        # Assert
+        assert expected in result
+
+    def test_initiated_row_get_size_property_returns_correctly(self):
+        # Arrange
+        dummy_grid = Grid()
+        dummy_row = Row(dummy_grid)
+        expected = 9
+        # Act
+        result = dummy_row.get_size
+        # Assert
+        assert expected == result
+
+        # Arrange
+        dummy_grid = Grid(3)
+        dummy_row = Row(dummy_grid)
+        expected = 3
+        # Act
+        result = dummy_row.get_size
+        # Assert
+        assert expected == result
+
+    def test_initiated_row_has_default_correct_length(self):
+        # Assert
+        dummy_grid = Grid()
+        dummy_row = Row(dummy_grid)
+        expected_length = 9
+        # Act
+        result_length = dummy_row.get_size
+        # Assert
+        assert expected_length == result_length
+
+    def test_initiated_row_has_specified_correct_length(self):
+        # Assert
+        input_size = 4
+        dummy_grid = Grid(input_size)
+        dummy_row = Row(dummy_grid)
+        expected_length = 4
+        # Act
+        result_length = dummy_row.get_size
+        # Assert
+        assert expected_length == result_length
+
+        # Assert
+        input_size = 54
+        dummy_grid = Grid(input_size)
+        dummy_row = Row(dummy_grid)
+        expected_length = 54
+        # Act
+        result_length = dummy_row.get_size
+        # Assert
+        assert expected_length == result_length
+    """
+
+class TestingCells:
+    def test_cell_initialises_correctly(self):
+        # Arrange
+        grid_index = 0
+        grid_size = 1
+        dummy_cell = Cell(grid_index, grid_size, None)
+        expected_cell_id = 0
+        expected_row_id = 0
+        expected_column_id = 0
+        expected_solution = None
+        expected_potentials = ['1']
+        # Act
+        result_cell_id = dummy_cell._Cell__cell_id
+        result_row_id = dummy_cell._Cell__row_id
+        result_column_id = dummy_cell._Cell__column_id
+        result_solution = dummy_cell._Cell__solution
+        result_potentials = dummy_cell._Cell__potentials
+        # Assert
+        assert expected_cell_id == result_cell_id
+        assert expected_row_id == result_row_id
+        assert expected_column_id == result_column_id
+        assert expected_solution == result_solution
+        assert expected_potentials == result_potentials
+
+        # Arrange
+        grid_index = 2
+        grid_size = 2
+        dummy_cell = Cell(grid_index, grid_size, None)
+        expected_cell_id = 2
+        expected_row_id = 1
+        expected_column_id = 0
+        expected_solution = None
+        expected_potentials = ['1', '2']
+        # Act
+        result_cell_id = dummy_cell.get_cell_number
+        result_row_id = dummy_cell.get_row
+        result_column_id = dummy_cell.get_column
+        result_solution = dummy_cell.get_solution
+        result_potentials = dummy_cell.get_potentials
+        # Assert
+        assert expected_cell_id == result_cell_id
+        assert expected_row_id == result_row_id
+        assert expected_column_id == result_column_id
+        assert expected_solution == result_solution
+        assert expected_potentials == result_potentials
+
+    def test_cell_solution_options(self):
+        # Arrange
+        grid_index = 15
+        grid_size = 9
+        dummy_cell = Cell(grid_index, grid_size, '4')
+        expected_cell_id = 15
+        expected_row_id = 1
+        expected_column_id = 6
+        expected_solution = '4'
+        expected_potentials = ['4']
+        # Act
+        result_cell_id = dummy_cell.get_cell_number
+        result_row_id = dummy_cell.get_row
+        result_column_id = dummy_cell.get_column
+        result_solution = dummy_cell.get_solution
+        result_potentials = dummy_cell.get_potentials
+        # Assert
+        assert expected_cell_id == result_cell_id
+        assert expected_row_id == result_row_id
+        assert expected_column_id == result_column_id
+        assert expected_solution == result_solution
+        assert expected_potentials == result_potentials

@@ -1,4 +1,5 @@
 from src.grid import Grid, Row, Column, Area, Cell
+from src.example_grids import full_four_by_four_grid
 
 class TestingGrids:
     def test_initialised_grid_has_get_size_property(self):
@@ -78,7 +79,7 @@ class TestingRows:
         # Arrange
         dummy_grid = Grid()
         dummy_row = Row(dummy_grid)
-        expected = 'get_size'
+        expected = 'size'
         # Act
         result = dir(dummy_row)
         # Assert
@@ -90,7 +91,7 @@ class TestingRows:
         dummy_row = Row(dummy_grid)
         expected = 9
         # Act
-        result = dummy_row.get_size
+        result = dummy_row.size
         # Assert
         assert expected == result
 
@@ -99,7 +100,7 @@ class TestingRows:
         dummy_row = Row(dummy_grid)
         expected = 3
         # Act
-        result = dummy_row.get_size
+        result = dummy_row.size
         # Assert
         assert expected == result
 
@@ -109,7 +110,7 @@ class TestingRows:
         dummy_row = Row(dummy_grid)
         expected_length = 9
         # Act
-        result_length = dummy_row.get_size
+        result_length = dummy_row.size
         # Assert
         assert expected_length == result_length
 
@@ -120,7 +121,7 @@ class TestingRows:
         dummy_row = Row(dummy_grid)
         expected_length = 4
         # Act
-        result_length = dummy_row.get_size
+        result_length = dummy_row.size
         # Assert
         assert expected_length == result_length
 
@@ -130,7 +131,7 @@ class TestingRows:
         dummy_row = Row(dummy_grid)
         expected_length = 54
         # Act
-        result_length = dummy_row.get_size
+        result_length = dummy_row.size
         # Assert
         assert expected_length == result_length
 
@@ -139,7 +140,7 @@ class TestingColumns:
         # Arrange
         dummy_grid = Grid()
         dummy_column = Column(dummy_grid)
-        expected = 'get_size'
+        expected = 'size'
         # Act
         result = dir(dummy_column)
         # Assert
@@ -151,7 +152,7 @@ class TestingColumns:
         dummy_column = Column(dummy_grid)
         expected = 9
         # Act
-        result = dummy_column.get_size
+        result = dummy_column.size
         # Assert
         assert expected == result
 
@@ -160,7 +161,7 @@ class TestingColumns:
         dummy_column = Column(dummy_grid)
         expected = 3
         # Act
-        result = dummy_column.get_size
+        result = dummy_column.size
         # Assert
         assert expected == result
 
@@ -170,7 +171,7 @@ class TestingColumns:
         dummy_column = Column(dummy_grid)
         expected_length = 9
         # Act
-        result_length = dummy_column.get_size
+        result_length = dummy_column.size
         # Assert
         assert expected_length == result_length
 
@@ -181,7 +182,7 @@ class TestingColumns:
         dummy_column = Column(dummy_grid)
         expected_length = 4
         # Act
-        result_length = dummy_column.get_size
+        result_length = dummy_column.size
         # Assert
         assert expected_length == result_length
 
@@ -191,7 +192,7 @@ class TestingColumns:
         dummy_column = Column(dummy_grid)
         expected_length = 54
         # Act
-        result_length = dummy_column.get_size
+        result_length = dummy_column.size
         # Assert
         assert expected_length == result_length
 
@@ -268,11 +269,11 @@ class TestingCells:
         expected_solution = None
         expected_potentials = ['1']
         # Act
-        result_cell_id = dummy_cell._Cell__cell_id
-        result_row_id = dummy_cell._Cell__row_id
-        result_column_id = dummy_cell._Cell__column_id
-        result_solution = dummy_cell._Cell__solution
-        result_potentials = dummy_cell._Cell__potentials
+        result_cell_id = dummy_cell.cell_id
+        result_row_id = dummy_cell.row_id
+        result_column_id = dummy_cell.column_id
+        result_solution = dummy_cell.solution
+        result_potentials = dummy_cell.potentials
         # Assert
         assert expected_cell_id == result_cell_id
         assert expected_row_id == result_row_id
@@ -348,3 +349,23 @@ class TestingCells:
         result_solution = dummy_cell.solution
         # Assert
         assert expected_solution == result_solution
+
+class TestingExampleGrids:
+    def test_full_four_by_four_grid(self):
+        # Arrange
+        dummy_grid = Grid(4)
+        for i in range(len(full_four_by_four_grid)): dummy_grid[i].solution = full_four_by_four_grid[i]
+        expected_00_solution = 1
+        expected_11_solution = 4
+        expected_22_solution = 4
+        expected_33_solution = 3
+        # Act
+        result_00_solution = dummy_grid[0].solution
+        result_11_solution = dummy_grid[5].solution
+        result_22_solution = dummy_grid[10].solution
+        result_33_solution = dummy_grid[15].solution
+        # Assert
+        assert expected_00_solution == result_00_solution
+        assert expected_11_solution == result_11_solution
+        assert expected_22_solution == result_22_solution
+        assert expected_33_solution == result_33_solution

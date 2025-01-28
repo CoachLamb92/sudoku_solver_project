@@ -4,9 +4,6 @@ A solo project where I aim to create a sudoku-solving file
 # To-do list:
 ## Pressing:
 
-- Test Rows on pre-made 4x4 grid
-- Test Columns on pre-made 4x4 grid
-- Test Areas on pre-made 4x4 grid
 - Make function that reduces potentials by solutions
 - Make function that sets solution by singular appearance in Row
 - Make function that sets solution by singular appearance in Column
@@ -36,4 +33,6 @@ A solo project where I aim to create a sudoku-solving file
 - ~~Create isSquare function in utils~~
 - ~~Test isSquare function~~
 - ~~Test some methods and attributes on pre-made 4x4 grid~~
-
+- ~~Test Rows on pre-made 4x4 grid~~
+- ~~Test Columns on pre-made 4x4 grid~~
+- ~~Test Areas on pre-made 4x4 grid~~

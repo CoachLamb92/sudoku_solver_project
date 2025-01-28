@@ -61,8 +61,8 @@ class Area(Grid):
         row = int(self.area_id // sqrt(self.size))
         column = int(self.area_id % sqrt(self.size))
         row_start = (int(sqrt(self.size)) * self.size * row)
-        row_and_column_start = row_start + (3 * column)
-        self._data = [grid.data[i:i+3] + grid.data[i+self.size:i+self.size+3] + grid.data[i+(2*self.size):i+(2*self.size)+3] for i in range(len(grid.data)) if i == row_and_column_start][0]
+        row_and_column_start = row_start + (self.size * column)
+        self._data = [grid.data[i:i+self.size] + grid.data[i+self.size:i+self.size+self.size] + grid.data[i+(2*self.size):i+(2*self.size)+self.size] for i in range(len(grid.data)) if i == row_and_column_start][0]
 
     @property
     def size(self):

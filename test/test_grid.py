@@ -369,3 +369,65 @@ class TestingExampleGrids:
         assert expected_11_solution == result_11_solution
         assert expected_22_solution == result_22_solution
         assert expected_33_solution == result_33_solution
+
+    def test_row_class_on_completed_grid(self):
+        # Arrange
+        dummy_grid = Grid(4)
+        for i in range(len(full_four_by_four_grid)): dummy_grid[i].solution = full_four_by_four_grid[i]
+        expected_1 = [1, 2, 3, 4]
+        expected_2 = [3, 4, 1, 2]
+        expected_3 = [2, 3, 4, 1]
+        expected_4 = [4, 1, 2, 3]
+        # Act
+        row_0 = Row(dummy_grid, 0)
+        row_1 = Row(dummy_grid, 1)
+        row_2 = Row(dummy_grid, 2)
+        row_3 = Row(dummy_grid, 3)
+        # Arrange
+        for i in range(4):
+            assert row_0.data[i].solution == expected_1[i]
+            assert row_1.data[i].solution == expected_2[i]
+            assert row_2.data[i].solution == expected_3[i]
+            assert row_3.data[i].solution == expected_4[i]
+
+    def test_column_class_on_completed_grid(self):
+        # Arrange
+        dummy_grid = Grid(4)
+        for i in range(len(full_four_by_four_grid)): dummy_grid[i].solution = full_four_by_four_grid[i]
+        expected_1 = [1, 3, 2, 4]
+        expected_2 = [2, 4, 3, 1]
+        expected_3 = [3, 1, 4, 2]
+        expected_4 = [4, 2, 1, 3]
+        # Act
+        column_0 = Column(dummy_grid, 0)
+        column_1 = Column(dummy_grid, 1)
+        column_2 = Column(dummy_grid, 2)
+        column_3 = Column(dummy_grid, 3)
+        # Arrange
+        for i in range(4):
+            assert column_0.data[i].solution == expected_1[i]
+            assert column_1.data[i].solution == expected_2[i]
+            assert column_2.data[i].solution == expected_3[i]
+            assert column_3.data[i].solution == expected_4[i]
+
+    def test_area_class_on_completed_grid(self):
+        # Arrange
+        dummy_grid = Grid(4)
+        for i in range(len(full_four_by_four_grid)): dummy_grid[i].solution = full_four_by_four_grid[i]
+        expected_1 = [1, 2, 3, 4]
+        expected_2 = [3, 4, 1, 2]
+        expected_3 = [2, 3, 4, 1]
+        expected_4 = [4, 1, 2, 3]
+        # Act
+        area_0 = Area(dummy_grid, 0)
+        area_1 = Area(dummy_grid, 1)
+        area_2 = Area(dummy_grid, 2)
+        area_3 = Area(dummy_grid, 3)
+        # Arrange
+        for i in range(4):
+            assert area_0.data[i].solution == expected_1[i]
+            assert area_1.data[i].solution == expected_2[i]
+            assert area_2.data[i].solution == expected_3[i]
+            assert area_3.data[i].solution == expected_4[i]
+
+

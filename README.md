@@ -36,3 +36,4 @@ A solo project where I aim to create a sudoku-solving file
 - ~~Test Rows on pre-made 4x4 grid~~
 - ~~Test Columns on pre-made 4x4 grid~~
 - ~~Test Areas on pre-made 4x4 grid~~
+- ~~Made a Cell method which reduces the potentials~~

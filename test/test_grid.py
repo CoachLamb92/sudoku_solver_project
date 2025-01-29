@@ -267,7 +267,7 @@ class TestingCells:
         expected_row_id = 0
         expected_column_id = 0
         expected_solution = None
-        expected_potentials = ['1']
+        expected_potentials = [1]
         # Act
         result_cell_id = dummy_cell.cell_id
         result_row_id = dummy_cell.row_id
@@ -289,7 +289,7 @@ class TestingCells:
         expected_row_id = 1
         expected_column_id = 0
         expected_solution = None
-        expected_potentials = ['1', '2']
+        expected_potentials = [1, 2]
         # Act
         result_cell_id = dummy_cell.cell_id
         result_row_id = dummy_cell.row_id
@@ -349,6 +349,25 @@ class TestingCells:
         result_solution = dummy_cell.solution
         # Assert
         assert expected_solution == result_solution
+
+    def test_cell_reduce_potentials_method(self):
+        # Arrange
+        dummy_cell = Cell(0, 4)
+        expected = [2, 3, 4]
+        # Act
+        dummy_cell.reduce_potentials(1)
+        result = dummy_cell.potentials
+        # Assert
+        assert expected == result
+
+        # Arrange
+        dummy_cell = Cell(0, 9)
+        expected = [1, 2, 3, 4, 6, 7, 8, 9]
+        # Act
+        dummy_cell.reduce_potentials(5)
+        result = dummy_cell.potentials
+        # Assert
+        assert expected == result
 
 class TestingExampleGrids:
     def test_full_four_by_four_grid(self):

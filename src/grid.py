@@ -1,5 +1,5 @@
 from math import sqrt
-from src.utils import isSquareNumber
+# from src.utils import isSquareNumber
 
 class Grid:
     def __init__(self, grid_size: int=9):
@@ -16,12 +16,17 @@ class Grid:
     def __setitem__(self, index, value):
         self.data[index] = value
 
+
+
 class Row(Grid):
     def __init__(self, grid: Grid, row_id: int=0):
         self._size = grid.size
         self._row_id = row_id
         self._data = [grid.data[i] for i in range(len(grid.data)) if i >= (self.row_id * self.size) and i < (self.row_id+1)*(self.size)]
 
+    def __str__(self):
+        return str([self.data[i].solution for i in range(self.size)])
+    
     @property
     def size(self):
         return self._size
@@ -83,7 +88,7 @@ class Cell:
         self._column_id = cell_id%grid_size
         self._area_id = (sqrt(grid_size)*self.row_id//(sqrt(grid_size))) + (self.column_id//int(sqrt(grid_size)))
         self._solution = solution
-        self._potentials = [str(i+1) for i in range(grid_size)] if solution == None else [solution]
+        self._potentials = [i+1 for i in range(grid_size)] if solution == None else [solution]
 
     @property
     def cell_id(self):
@@ -116,7 +121,10 @@ class Cell:
     
     @solution.setter
     def solution(self, solution: int):
-        self._solution = solution
+        if solution == 0:
+            self._solution = None
+        else:
+            self._solution = solution
     
     @property
     def potentials(self):
@@ -126,14 +134,11 @@ class Cell:
     def potentials(self, potentials_list: list):
         self._potentials = potentials_list
     
-    def reduce_potentials(self):
-        # Util function of some descript
-        # Another one
-        # Each take in area, column, row and potential
-        # each return a reduced potential?
-        # or one master util takes in arguments then returns potentials once several functions have been applied?
-        # reassign self.__potentials
-        pass
+    def reduce_potentials(self, number):
+        try:
+            self.potentials.remove(number)
+        except ValueError:
+            pass
 
     def solve(self):
         if len(self.potentials) == 1:

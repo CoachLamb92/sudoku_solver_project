@@ -16,8 +16,6 @@ class Grid:
     def __setitem__(self, index, value):
         self.data[index] = value
 
-
-
 class Row(Grid):
     def __init__(self, grid: Grid, row_id: int=0):
         self._size = grid.size
@@ -44,7 +42,10 @@ class Column(Grid):
         self._size = grid.size
         self._column_id = column_id
         self._data = [grid.data[i] for i in range(len(grid.data)) if i % self.size == self.column_id]
-
+    
+    def __str__(self):
+        return str([self.data[i].solution for i in range(self.size)])
+    
     @property
     def size(self):
         return self._size

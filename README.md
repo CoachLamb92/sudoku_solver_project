@@ -4,9 +4,7 @@ A solo project where I aim to create a sudoku-solving file
 # To-do list:
 ## Pressing:
 
-- Make function that reduces potentials by solutions
-- Make function that sets solution by singular appearance in Row
-- Make function that sets solution by singular appearance in Column
+- Area.data needs editing, it assigns datum as though we are using a 9x9 grid, despite testing with a 4x4 grid
 - Make function that sets solution by singular appearance in Area
 - Develop more algorithms to eliminate potentials
 
@@ -37,3 +35,6 @@ A solo project where I aim to create a sudoku-solving file
 - ~~Test Columns on pre-made 4x4 grid~~
 - ~~Test Areas on pre-made 4x4 grid~~
 - ~~Made a Cell method which reduces the potentials~~
+- ~~Make function that reduces potentials by solutions~~
+- ~~Make function that sets solution by singular appearance in Row~~
+- ~~Make function that sets solution by singular appearance in Column~~

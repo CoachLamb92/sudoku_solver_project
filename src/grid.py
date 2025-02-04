@@ -64,11 +64,9 @@ class Area(Grid):
     def __init__(self, grid: Grid, area_id: int=0):
         self._size = grid.size
         self._area_id = area_id
-        row = int(self.area_id // sqrt(self.size))
-        column = int(self.area_id % sqrt(self.size))
-        row_start = (int(sqrt(self.size)) * self.size * row)
-        row_and_column_start = row_start + (self.size * column)
-        self._data = [grid.data[i:i+self.size] + grid.data[i+self.size:i+self.size+self.size] + grid.data[i+(2*self.size):i+(2*self.size)+self.size] for i in range(len(grid.data)) if i == row_and_column_start][0]
+        top_left = ((area_id%int(sqrt(grid.size))) * int(sqrt(grid.size))) + ((area_id//int(sqrt(grid.size))) * grid.size * int(sqrt(grid.size)))
+        unformatted_cells = [grid.data[top_left+(i*self.size):top_left+(i*self.size)+int(sqrt(self.size))] for i in range(int(sqrt(grid.size)))]
+        self._data = [cell for cluster in unformatted_cells for cell in cluster]
 
     @property
     def size(self):

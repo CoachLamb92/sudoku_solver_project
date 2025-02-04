@@ -6,8 +6,7 @@ def isSquareNumber(number: int):
 
 def reduce_potentials_by_solutions(grid):
     for i in range(grid.size):
-        """, Area(grid, i)"""
-        object_list =  [Row(grid, i), Column(grid, i)]
+        object_list =  [Row(grid, i), Column(grid, i), Area(grid, i)]
         for object in object_list:
             for cell in object:
                 if cell.solution:

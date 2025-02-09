@@ -1,8 +1,9 @@
-from src.utils import isSquareNumber, reduce_potentials_by_solutions
+from src.utils import isSquareNumber, reduce_potentials_by_solutions, one_number_left
 from src.example_grids import only_ones_four_by_four_grid as oofxfgrid
 from src.example_grids import mixed_four_by_four_grid as mxfxfgrid
 from src.example_grids import only_ones_nine_by_nine_grid as oonxngrid
 from src.example_grids import mixed_nine_by_nine_grid as mxnxngrid
+from src.example_grids import semi_solved_nine_by_nine_grid as ssnxngrid
 from src.grid import Grid, Row, Column, Area, Cell
 
 class TestIsSquareNumberFunction:
@@ -182,5 +183,38 @@ class TestReducePotentialsBySolutions:
         for i in range(63, 72): assert expected_grid_potentials_row_7[i%63] == dummy_grid[i].potentials
         for i in range(72, 81): assert expected_grid_potentials_row_8[i%72] == dummy_grid[i].potentials
 
+class TestOneNumberLeft:
+    def test_function_works_on_complex_four_by_four_grid(self):
+        #Arrange 
+        dummy_grid = Grid(4)
+        for i in range(len(mxfxfgrid)): dummy_grid[i].solution = mxfxfgrid[i]
+        expected_grid_solutions =   [1, 2, 3, 4,
+                                     3, 4, 1, 2,
+                                     2, 3, 4, 1,
+                                     4, 1, 2, 3]
+        # Act
+        one_number_left(dummy_grid)
+        # Assert
+        for i in range(dummy_grid.size**2):
+            assert expected_grid_solutions[i] == 0 if dummy_grid[i].solution == None else dummy_grid[i].solution
+
+    def test_function_works_on_complex_nine_by_nine_grid(self):
+        #Arrange 
+        dummy_grid = Grid(9)
+        for i in range(len(ssnxngrid)): dummy_grid[i].solution = ssnxngrid[i]
+        expected_grid_solutions = [3, 9, 1, 2, 8, 6, 5, 7, 4,
+                                   4, 8, 0, 0, 0, 0, 1, 2, 0,
+                                   6, 0, 0, 0, 1, 0, 0, 3, 0,
+                                   8, 0, 0, 0, 0, 1, 0, 0, 2,
+                                   2, 1, 0, 0, 6, 0, 0, 0, 0,
+                                   9, 0, 0, 0, 0, 0, 7, 1, 0,
+                                   1, 4, 9, 6, 7, 3, 2, 5, 8,
+                                   5, 3, 8, 1, 4, 2, 0, 6, 0,
+                                   7, 2, 6, 8, 9, 5, 3, 4, 1]
+        # Act
+        one_number_left(dummy_grid)
+        # Assert
+        for i in range(dummy_grid.size**2):
+            assert expected_grid_solutions[i] == 0 if dummy_grid[i].solution == None else dummy_grid[i].solution
 
         

@@ -4,6 +4,9 @@ A solo project where I aim to create a sudoku-solving file
 # To-do list:
 ## Pressing:
 
+- Make remove_potentials_from_area_if_only_in_row
+- Make remove_potentials_from_area_if_only_in_column
+- Make remove_deterministic_groups <- FUNCTION FOR 2, FUNCTION FOR 3, SEE HOW TO GENERALISE
 - Develop more algorithms to eliminate potentials
 
 ## General:
@@ -38,3 +41,6 @@ A solo project where I aim to create a sudoku-solving file
 - ~~Area.data needs editing, it assigns datum as though we are using a 9x9 grid, despite testing with a 4x4 grid~~
 - ~~Make function that sets solution by singular appearance in Area~~
 - ~~Test many methods and attributes on pre-made 9x9 grid~~
+- ~~Make only_one_left algorithm~~
+- ~~Test only_one_left on 4x4 grid~~
+- ~~Test only_one_left on 9x9 grid~~

@@ -86,7 +86,7 @@ class Cell:
         self._row_id = cell_id//grid_size
         self._column_id = cell_id%grid_size
         self._area_id = (sqrt(grid_size)*self.row_id//(sqrt(grid_size))) + (self.column_id//int(sqrt(grid_size)))
-        self._solution = solution
+        self._solution = None if solution == 0 else solution
         self._potentials = [i+1 for i in range(grid_size)] if solution == None else [solution]
 
     @property

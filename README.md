@@ -4,7 +4,6 @@ A solo project where I aim to create a sudoku-solving file
 # To-do list:
 ## Pressing:
 
-- Test many methods and attributes on pre-made 9x9 grid
 - Develop more algorithms to eliminate potentials
 
 ## General:
@@ -38,3 +37,4 @@ A solo project where I aim to create a sudoku-solving file
 - ~~Make function that sets solution by singular appearance in Column~~
 - ~~Area.data needs editing, it assigns datum as though we are using a 9x9 grid, despite testing with a 4x4 grid~~
 - ~~Make function that sets solution by singular appearance in Area~~
+- ~~Test many methods and attributes on pre-made 9x9 grid~~
